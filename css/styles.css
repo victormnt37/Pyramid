@@ -29,8 +29,9 @@ header h2 {
 }
 
 main {
-  display: flex;
   justify-content: center;
+  border: 1px solid black;
+  min-height: 10rem;
 }
 
 main div {
@@ -40,10 +41,16 @@ main div {
 
 main div input {
   margin: 0.2rem;
-  width: 1.5%;
+  width: 100%;
   background-color: transparent;
   border: 0;
-  border-bottom: 2px solid aliceblue;
+  text-align: center;
+  outline: none;
+}
+
+footer {
+  margin-top: 1rem;
+  border: 1px solid black;
 }
 
 div#info,
