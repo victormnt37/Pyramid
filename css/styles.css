@@ -39,8 +39,15 @@ main div {
   justify-content: center;
 }
 
+main div#three {
+  width: 5%;
+  margin-left: 47.5%;
+  margin-right: 47.5%;
+}
+
 main div input {
   margin: 0.2rem;
+  margin-bottom: 0;
   width: 100%;
   background-color: transparent;
   border: 0;
@@ -51,6 +58,11 @@ main div input {
 footer {
   margin-top: 1rem;
   border: 1px solid black;
+  display: flex;
+}
+
+footer span {
+  border: 1px solid white;
 }
 
 div#info,
@@ -60,7 +72,7 @@ div#adjust {
   border-radius: 1rem;
   width: 94%;
   margin: 3%;
-  margin-top: -5rem;
+  margin-top: -24rem;
   height: 5.5rem;
 }
 
@@ -74,4 +86,11 @@ div#adjust button {
 div#info p,
 div#adjust p {
   margin: 0.5rem;
+}
+
+div#line {
+  border-top: 1px solid white;
+  width: 1%;
+  margin: 0.2%;
+  margin-top: 0;
 }
