@@ -30,7 +30,7 @@ header h2 {
 
 main {
   justify-content: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-height: 10rem;
 }
 
@@ -57,7 +57,7 @@ main div input {
 
 footer {
   margin-top: 1rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
 }
 
@@ -72,7 +72,7 @@ div#adjust {
   border-radius: 1rem;
   width: 94%;
   margin: 3%;
-  margin-top: -24rem;
+  margin-top: -16rem;
   height: 5.5rem;
 }
 
