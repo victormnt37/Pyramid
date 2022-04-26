@@ -58,11 +58,20 @@ main div input {
 footer {
   margin-top: 1rem;
   /* border: 1px solid black; */
-  display: flex;
 }
 
-footer span {
-  border: 1px solid white;
+footer div {
+  display: flex;
+  justify-content: center;
+}
+
+footer div button {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: transparent;
+  border-radius: 0.5rem;
 }
 
 div#info,
