@@ -45,7 +45,7 @@ main div#three {
   margin-right: 47.5%;
 }
 
-main div input {
+main div span#input {
   margin: 0.2rem;
   margin-bottom: 0;
   width: 100%;
@@ -72,6 +72,11 @@ footer div button {
   padding-bottom: 0;
   background-color: transparent;
   border-radius: 0.5rem;
+}
+
+footer div i {
+  margin: 0.5rem;
+  margin-top: 0.7rem;
 }
 
 div#info,
