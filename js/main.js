@@ -50,55 +50,54 @@ adjustEsc.addEventListener('click', () => {
 
 /************ LETTER'S BUTTONS ************/
 
-const letter1 = document.querySelector('button#letter1');
-const letter2 = document.querySelector('button#letter2');
-const letter3 = document.querySelector('button#letter3');
-const letter4 = document.querySelector('button#letter4');
-const letter5 = document.querySelector('button#letter5');
-const letter6 = document.querySelector('button#letter6');
-const letter7 = document.querySelector('button#letter7');
-const deleteButton = document.querySelector('footer div i.fa-delete-left');
-const refreshButton = document.querySelector('footer div i.fa-arrows-rotate');
+createButtons();
 
-letter1.addEventListener('click', () => {
-  addLetter(letter1);
-});
-letter2.addEventListener('click', () => {
-  addLetter(letter2);
-});
-letter3.addEventListener('click', () => {
-  addLetter(letter3);
-});
-letter4.addEventListener('click', () => {
-  addLetter(letter4);
-});
-letter5.addEventListener('click', () => {
-  addLetter(letter5);
-});
-letter6.addEventListener('click', () => {
-  addLetter(letter6);
-});
-letter7.addEventListener('click', () => {
-  addLetter(letter7);
-});
+function createButtons() {
+  const letter1 = document.querySelector('button#letter1'),
+    letter2 = document.querySelector('button#letter2'),
+    letter3 = document.querySelector('button#letter3'),
+    letter4 = document.querySelector('button#letter4'),
+    letter5 = document.querySelector('button#letter5'),
+    letter6 = document.querySelector('button#letter6'),
+    letter7 = document.querySelector('button#letter7'),
+    deleteButton = document.querySelector('footer div i.fa-delete-left'),
+    refreshButton = document.querySelector('footer div i.fa-arrows-rotate');
 
-deleteButton.addEventListener('click', () => {
-  deleteLetter();
-});
+  letterAdder(letter1);
+  letterAdder(letter2);
+  letterAdder(letter3);
+  letterAdder(letter4);
+  letterAdder(letter5);
+  letterAdder(letter6);
+  letterAdder(letter7);
 
-refreshButton.addEventListener('click', () => {});
+  deleteButton.addEventListener('click', () => {
+    deleteLetter();
+  });
+
+  refreshButton.addEventListener('click', () => {});
+}
 
 function addLetter(letter) {
-  if (document.querySelector('div.selected span#input').value.length < 3) {
-    document.querySelector('div.selected span#input').value =
-      document.querySelector('div.selected span#input').value +
+  if (document.querySelector('div.selected span#input').innerHTML.length < 3) {
+    document.querySelector('div.selected span#input').innerHTML =
+      document.querySelector('div.selected span#input').innerHTML +
       letter.innerHTML;
   }
 }
 
-function deleteLetter() {
-  let word = document.querySelector('div.selected span#input').value; //word is undefined
-  let array = word.split('');
-  array.pop();
-  document.querySelector('div.selected span#input').value = array.join('');
+function letterAdder(letter) {
+  letter.addEventListener('click', () => {
+    addLetter(letter);
+  });
 }
+
+function deleteLetter() {
+  let array = document
+    .querySelector('div.selected span#input')
+    .innerHTML.split('');
+  array.pop();
+  document.querySelector('div.selected span#input').innerHTML = array.join('');
+}
+
+/************ CREATE NEW ROW ************/

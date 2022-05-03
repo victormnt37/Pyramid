@@ -49,6 +49,7 @@ main div span#input {
   margin: 0.2rem;
   margin-bottom: 0;
   width: 100%;
+  min-height: 1.28rem;
   background-color: transparent;
   border: 0;
   text-align: center;
