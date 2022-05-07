@@ -4,49 +4,58 @@ const input3 = document.querySelector('div#three span#input');
 const row = 3; //The amount of letters the user can write in the word
 
 window.addEventListener('keydown', (event) => {
-  insertLetter(event);
+  if (input3.innerHTML.length < row) {
+    insertLetter(event);
+  }
+
   if (event.key === 'Backspace') {
     deleteLetter();
+  }
+
+  if (event.key === 'Enter') {
+    verifyRow(row);
   }
 });
 
 function insertLetter(event) {
   const regexp = new RegExp('^[a-zA-Zs]*$');
-  if (input3.innerHTML.length < row) {
-    if (event.key.match(regexp) && event.key.length === 1) {
-      input3.innerHTML = input3.innerHTML + event.key;
-    }
+  if (event.key.match(regexp) && event.key.length === 1) {
+    input3.innerHTML = input3.innerHTML + event.key;
   }
 }
 
 /************ ADJUSTMENTS AND INFO ************/
 
-const info = document.querySelector('div#info');
-const infoButton = document.querySelector('i.fa-solid.fa-circle-question');
-const infoEsc = document.querySelector('div#info button');
+addUpperDivs();
 
-const adjust = document.querySelector('div#adjust');
-const adjustButton = document.querySelector('i.fa-solid.fa-gear');
-const adjustEsc = document.querySelector('div#adjust button');
+function addUpperDivs() {
+  const info = document.querySelector('div#info');
+  const infoButton = document.querySelector('i.fa-solid.fa-circle-question');
+  const infoEsc = document.querySelector('div#info button');
 
-info.hidden = true;
-adjust.hidden = true;
+  const adjust = document.querySelector('div#adjust');
+  const adjustButton = document.querySelector('i.fa-solid.fa-gear');
+  const adjustEsc = document.querySelector('div#adjust button');
 
-infoButton.addEventListener('click', () => {
-  info.hidden = false;
-});
-
-infoEsc.addEventListener('click', () => {
   info.hidden = true;
-});
-
-adjustButton.addEventListener('click', () => {
-  adjust.hidden = false;
-});
-
-adjustEsc.addEventListener('click', () => {
   adjust.hidden = true;
-});
+
+  infoButton.addEventListener('click', () => {
+    info.hidden = false;
+  });
+
+  infoEsc.addEventListener('click', () => {
+    info.hidden = true;
+  });
+
+  adjustButton.addEventListener('click', () => {
+    adjust.hidden = false;
+  });
+
+  adjustEsc.addEventListener('click', () => {
+    adjust.hidden = true;
+  });
+}
 
 /************ LETTER'S BUTTONS ************/
 
@@ -101,3 +110,5 @@ function deleteLetter() {
 }
 
 /************ CREATE NEW ROW ************/
+
+function verifyRow() {}
