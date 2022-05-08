@@ -111,4 +111,11 @@ function deleteLetter() {
 
 /************ CREATE NEW ROW ************/
 
-function verifyRow() {}
+function verifyRow() {
+  if (
+    document.querySelector('main').lastElementChild.previousElementSibling
+      .firstElementChild.innerHTML.length === row
+  ) {
+    return;
+  }
+}
