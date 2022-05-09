@@ -1,11 +1,13 @@
 'use strict';
 
-const input3 = document.querySelector('div#three span#input');
-const row = 3; //The amount of letters the user can write in the word
+let row = 3; //The amount of letters the user can write in the word
 
 window.addEventListener('keydown', (event) => {
-  if (input3.innerHTML.length < row) {
-    insertLetter(event);
+  const input =
+    document.querySelector('main').lastElementChild.previousElementSibling
+      .firstElementChild;
+  if (input.innerHTML.length < row) {
+    insertLetter(event, input);
   }
 
   if (event.key === 'Backspace') {
@@ -13,14 +15,14 @@ window.addEventListener('keydown', (event) => {
   }
 
   if (event.key === 'Enter') {
-    verifyRow(row);
+    verifyRow();
   }
 });
 
-function insertLetter(event) {
+function insertLetter(event, input) {
   const regexp = new RegExp('^[a-zA-Zs]*$');
   if (event.key.match(regexp) && event.key.length === 1) {
-    input3.innerHTML = input3.innerHTML + event.key;
+    input.innerHTML = input.innerHTML + event.key;
   }
 }
 
@@ -88,10 +90,8 @@ function createButtons() {
 }
 
 function addLetter(letter) {
-  if (document.querySelector('div.selected span#input').innerHTML.length < 3) {
-    document.querySelector('div.selected span#input').innerHTML =
-      document.querySelector('div.selected span#input').innerHTML +
-      letter.innerHTML;
+  if (input.innerHTML.length < row) {
+    input.innerHTML = input.innerHTML + letter.innerHTML;
   }
 }
 
@@ -103,19 +103,60 @@ function letterAdder(letter) {
 
 function deleteLetter() {
   let array = document
-    .querySelector('div.selected span#input')
-    .innerHTML.split('');
+    .querySelector('main')
+    .lastElementChild.previousElementSibling.firstElementChild.innerHTML.split(
+      ''
+    );
   array.pop();
-  document.querySelector('div.selected span#input').innerHTML = array.join('');
+  document.querySelector(
+    'main'
+  ).lastElementChild.previousElementSibling.firstElementChild.innerHTML =
+    array.join('');
 }
 
 /************ CREATE NEW ROW ************/
 
 function verifyRow() {
-  if (
+  const word =
     document.querySelector('main').lastElementChild.previousElementSibling
-      .firstElementChild.innerHTML.length === row
-  ) {
+      .firstElementChild.innerHTML;
+  console.log(word);
+  if (word.length === row) {
+    getWord(word);
+    console.log('yes');
+  }
+}
+
+async function getWord(word) {
+  const resp = await fetch(
+    'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
+  );
+  if (resp.ok) {
+    const json = await resp.json();
+    createRow();
+  } else {
     return;
+  }
+}
+
+function createRow() {
+  const main = document.querySelector('main');
+  const rowDiv =
+    document.querySelector('main').lastElementChild.previousElementSibling
+      .firstElementChild;
+  const div = document.createElement('div');
+  const line = document.querySelector('div#line');
+
+  ++row;
+  //TODO: No crea los divs donde toca
+  main.appendChild(rowDiv);
+  main.appendChild(div);
+
+  createLines(row, main, line);
+}
+
+function createLines(row, main) {
+  for (let i = row; i >= 0; i--) {
+    main.appendChild(line);
   }
 }

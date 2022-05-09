@@ -4,6 +4,7 @@
 
 body {
   background-image: linear-gradient(yellow, darkorange);
+  background-repeat: no-repeat;
 }
 
 footer div button {
