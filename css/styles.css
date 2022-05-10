@@ -39,6 +39,10 @@ main div {
   justify-content: center;
 }
 
+main div#row {
+  min-height: 1.3rem;
+}
+
 main div#three {
   width: 5%;
   margin-left: 47.5%;
@@ -57,7 +61,7 @@ main div span#input {
 }
 
 footer {
-  margin-top: 1rem;
+  margin-top: 9rem;
   /* border: 1px solid black; */
 }
 

@@ -123,7 +123,7 @@ function verifyRow() {
   console.log(word);
   if (word.length === row) {
     getWord(word);
-    console.log('yes');
+    console.log('Long enought');
   }
 }
 
@@ -134,29 +134,33 @@ async function getWord(word) {
   if (resp.ok) {
     const json = await resp.json();
     createRow();
-  } else {
+  } else if (!resp.ok) {
     return;
   }
 }
 
 function createRow() {
   const main = document.querySelector('main');
-  const rowDiv =
-    document.querySelector('main').lastElementChild.previousElementSibling
-      .firstElementChild;
-  const div = document.createElement('div');
-  const line = document.querySelector('div#line');
+  const rowDiv = document.createElement('div');
+  const span = document.createElement('span');
 
   ++row;
   //TODO: No crea los divs donde toca
   main.appendChild(rowDiv);
-  main.appendChild(div);
+  rowDiv.id = 'row';
+  rowDiv.appendChild(span);
+  span.id = 'line';
 
-  createLines(row, main, line);
+  createLines(main);
 }
 
-function createLines(row, main) {
-  for (let i = row; i >= 0; i--) {
-    main.appendChild(line);
+function createLines(main) {
+  const div = document.createElement('div');
+
+  main.appendChild(div);
+  for (let i = row; i > 0; i--) {
+    const line = document.createElement('div');
+    line.id = 'line';
+    div.appendChild(line);
   }
 }
