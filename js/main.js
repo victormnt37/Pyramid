@@ -90,6 +90,9 @@ function createButtons() {
 }
 
 function addLetter(letter) {
+  const input =
+    document.querySelector('main').lastElementChild.previousElementSibling
+      .firstElementChild;
   if (input.innerHTML.length < row) {
     input.innerHTML = input.innerHTML + letter.innerHTML;
   }

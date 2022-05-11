@@ -13,7 +13,12 @@ footer div button {
 
 div#info button,
 div#adjust button {
-  color: black;
+  color: white;
+}
+
+div#info p,
+div#adjust p {
+  color: white;
 }
 
 div#line {

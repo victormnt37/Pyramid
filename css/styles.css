@@ -61,7 +61,7 @@ main div span#input {
 }
 
 footer {
-  margin-top: 9rem;
+  margin-top: 3rem;
   /* border: 1px solid black; */
 }
 
@@ -110,6 +110,6 @@ div#adjust p {
 div#line {
   border-top: 1px solid white;
   width: 1%;
-  margin: 0.2%;
+  margin: 0.12%;
   margin-top: 0;
 }
