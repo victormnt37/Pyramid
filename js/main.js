@@ -72,7 +72,9 @@ function createButtons() {
     letter6 = document.querySelector('button#letter6'),
     letter7 = document.querySelector('button#letter7'),
     deleteButton = document.querySelector('footer div i.fa-delete-left'),
-    refreshButton = document.querySelector('footer div i.fa-arrows-rotate');
+    enterButton = document.querySelector('footer div i.fa-check'),
+    refreshButton = document.querySelector('footer div i.fa-arrows-rotate'),
+    shareButton = document.querySelector('footer div i.fa-share');
 
   letterAdder(letter1);
   letterAdder(letter2);
@@ -86,7 +88,12 @@ function createButtons() {
     deleteLetter();
   });
 
+  enterButton.addEventListener('click', () => {
+    verifyRow();
+  });
+
   refreshButton.addEventListener('click', () => {});
+  shareButton.addEventListener('click', () => {});
 }
 
 function addLetter(letter) {
@@ -134,6 +141,7 @@ async function getWord(word) {
   const resp = await fetch(
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
   );
+  //TODO: Al presionar Enter repetidas veces se crean muchas rows en blanco
   if (resp.ok) {
     const json = await resp.json();
     createRow();
@@ -148,7 +156,7 @@ function createRow() {
   const span = document.createElement('span');
 
   ++row;
-  //TODO: No crea los divs donde toca
+
   main.appendChild(rowDiv);
   rowDiv.id = 'row';
   rowDiv.appendChild(span);
