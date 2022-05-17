@@ -14,14 +14,17 @@
 
 body {
   background-color: darkslategrey;
-  min-height: 30rem;
 }
 
 header {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-around;
-  margin-top: 1rem;
+  padding-top: 1rem;
+  margin-top: -4rem;
   margin-bottom: 1rem;
+  box-shadow: 10px 20px 20px darkslategrey;
 }
 
 header h1 {
@@ -38,13 +41,14 @@ header div#lines {
 }
 
 header div#a {
-  border-top: 1px solid white;
+  border-top: 2px solid aliceblue;
   width: 0.2rem;
   margin: 0.03rem;
-  margin-top: 0.3rem;
+  margin-top: 0.27rem;
 }
 
 main {
+  margin-top: 4rem;
   justify-content: center;
   /* border: 1px solid black; */
   min-height: 10rem;
@@ -60,7 +64,7 @@ main div#row {
 }
 
 div#line {
-  border-top: 1px solid white;
+  border-top: 1px solid aliceblue;
   width: 1%;
   margin: 0.12%;
   margin-top: 0;
@@ -78,7 +82,7 @@ main div span#input {
 }
 
 footer {
-  margin-top: 3rem;
+  margin-top: 2rem;
   /* border: 1px solid black; */
 }
 
@@ -107,6 +111,7 @@ div#adjust {
   position: absolute;
   width: 100%;
   height: 100%;
+  padding: 1rem;
   top: 0px;
   right: 0px;
   bottom: 0px;
@@ -116,10 +121,8 @@ div#adjust {
 div#info button,
 div#adjust button {
   color: aliceblue;
-  margin-left: 90%;
   font-size: 2rem;
   background-color: transparent;
-  margin: 1rem;
   border: none;
 }
 

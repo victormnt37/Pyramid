@@ -3,8 +3,18 @@
 }
 
 body {
+  background-color: darkorange;
   background-image: linear-gradient(yellow, darkorange);
   background-repeat: no-repeat;
+}
+
+header {
+  background-color: #ffeb00;
+  box-shadow: 10px 20px 20px #ffeb00;
+}
+
+header div#a {
+  border-top: 1px solid black;
 }
 
 footer div button {
