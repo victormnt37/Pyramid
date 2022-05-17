@@ -6,6 +6,7 @@ window.addEventListener('keydown', (event) => {
   const input =
     document.querySelector('main').lastElementChild.previousElementSibling
       .firstElementChild;
+
   if (input.innerHTML.length < row) {
     insertLetter(event, input);
   }
@@ -73,7 +74,7 @@ function createButtons() {
     letter7 = document.querySelector('button#letter7'),
     deleteButton = document.querySelector('footer div i.fa-delete-left'),
     enterButton = document.querySelector('footer div i.fa-check'),
-    refreshButton = document.querySelector('footer div i.fa-arrows-rotate'),
+    moveButton = document.querySelector('footer div i.fa-arrows-rotate'),
     shareButton = document.querySelector('footer div i.fa-share');
 
   letterAdder(letter1);
@@ -89,10 +90,13 @@ function createButtons() {
   });
 
   enterButton.addEventListener('click', () => {
-    verifyRow();
+    verifyRow(); //Añadir función delay?
   });
 
-  refreshButton.addEventListener('click', () => {});
+  moveButton.addEventListener('click', () => {
+    moveLetters(letter1, letter2, letter3, letter4, letter5, letter6, letter7);
+  });
+
   shareButton.addEventListener('click', () => {});
 }
 
@@ -122,6 +126,35 @@ function deleteLetter() {
     'main'
   ).lastElementChild.previousElementSibling.firstElementChild.innerHTML =
     array.join('');
+}
+
+function moveLetters(l1, l2, l3, l4, l5, l6, l7) {
+  const letters = [
+    l1.innerHTML,
+    l2.innerHTML,
+    l3.innerHTML,
+    l4.innerHTML,
+    l5.innerHTML,
+    l6.innerHTML,
+    l7.innerHTML,
+  ];
+
+  let currentIndex = letters.length,
+    temporaryValue,
+    randomIndex;
+
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = letters[currentIndex];
+    letters[currentIndex] = letters[randomIndex];
+    letters[randomIndex] = temporaryValue;
+  }
+
+  for (let i = letters.length; i > 0; i--) {
+    const cssLetter = 'button#letter' + i;
+    document.querySelector(cssLetter).innerHTML = letters[i - 1];
+  }
 }
 
 /************ CREATE NEW ROW ************/
