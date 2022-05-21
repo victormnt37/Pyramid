@@ -14,7 +14,7 @@ header {
 }
 
 header div#a {
-  border-top: 1px solid black;
+  border-top: 2px solid black;
 }
 
 footer div button {
@@ -26,9 +26,14 @@ div#adjust button {
   color: white;
 }
 
+div#info h2,
+div#adjust h2 {
+  color: aliceblue;
+}
+
 div#info p,
 div#adjust p {
-  color: white;
+  color: aliceblue;
 }
 
 div#line {

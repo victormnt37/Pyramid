@@ -64,6 +64,7 @@ main div#row {
 }
 
 div#line {
+  justify-content: left;
   border-top: 1px solid aliceblue;
   width: 1%;
   margin: 0.12%;
@@ -97,7 +98,7 @@ footer div button {
   padding-top: 0;
   padding-bottom: 0;
   background-color: transparent;
-  border-radius: 0.5rem;
+  font-size: 1.3rem;
 }
 
 footer div i {
