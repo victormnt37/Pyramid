@@ -92,7 +92,7 @@ function createButtons() {
     moveLetters(letters);
   });
 
-  shareButton.addEventListener('click', () => {});
+  shareButton.addEventListener('click', () => {}); //TODO
 }
 
 function addLetter(letter) {
@@ -157,10 +157,10 @@ function verifyRow() {
   const word =
     document.querySelector('main').lastElementChild.previousElementSibling
       .firstElementChild.innerHTML;
-  console.log(word);
   if (word.length === row) {
-    getWord(word);
-    console.log('Long enought');
+    getWord(word); //TODO: Verify if the word has the correct letters
+  } else if (word.length < row) {
+    alert('Not long enought');
   }
 }
 
@@ -205,4 +205,36 @@ function createLines(main) {
 
 /************ STYLES ************/
 
-const cssLink = document.createElement('link');
+createStylesButtons();
+
+function createStylesButtons() {
+  const cssLink = document.head.lastElementChild;
+
+  const classicButton = document.querySelector('div#adjust button#classic');
+  classicButton.addEventListener('click', () => {
+    cssLink.href = '../css/styles.css';
+  });
+
+  const desertButton = document.querySelector('div#adjust button#desert');
+  desertButton.addEventListener('click', () => {
+    cssLink.href = '../css/desert.css';
+  });
+
+  const draculaButton = document.querySelector('div#adjust button#dracula');
+  draculaButton.addEventListener('click', () => {
+    cssLink.href = '../css/dracula.css';
+  });
+
+  const terminalButton = document.querySelector('div#adjust button#terminal');
+  terminalButton.addEventListener('click', () => {
+    cssLink.href = '../css/terminal.css';
+  });
+
+  const cakeButton = document.querySelector('div#adjust button#cake');
+  cakeButton.addEventListener('click', () => {
+    cssLink.href = '../css/cake.css';
+  });
+}
+
+/************ COOKIES ************/
+//TODO: cookies

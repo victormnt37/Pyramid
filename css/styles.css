@@ -99,6 +99,7 @@ footer div button {
   padding-bottom: 0;
   background-color: transparent;
   font-size: 1.3rem;
+  border-radius: 0.5rem;
 }
 
 footer div i {
@@ -119,8 +120,17 @@ div#adjust {
   left: 0px;
 }
 
-div#info button,
 div#adjust button {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+div#info button#exit,
+div#adjust button#exit {
+  margin: 0;
+  padding: 0;
   color: aliceblue;
   font-size: 2rem;
   background-color: transparent;
@@ -130,4 +140,30 @@ div#adjust button {
 div#info p,
 div#adjust p {
   margin: 0.5rem;
+}
+
+div#adjust button#classic {
+  background-color: darkslategray;
+  color: aliceblue;
+}
+
+div#adjust button#desert {
+  background-image: linear-gradient(yellow, darkorange);
+  color: black;
+}
+
+div#adjust button#dracula {
+  background-color: rgb(82, 72, 90);
+  color: red;
+}
+
+div#adjust button#terminal {
+  background-color: black;
+  color: chartreuse;
+  border: 1px chartreuse solid;
+}
+
+div#adjust button#cake {
+  background-image: linear-gradient(lightyellow, lightpink);
+  color: purple;
 }
