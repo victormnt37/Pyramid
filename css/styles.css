@@ -35,12 +35,12 @@ header div#title {
   display: flex;
 }
 
-header div#lines {
+header div.lines {
   display: flex;
   justify-content: center;
 }
 
-header div#a {
+header div.a {
   border-top: 2px solid aliceblue;
   width: 0.2rem;
   margin: 0.03rem;
@@ -67,7 +67,7 @@ div#line {
   border-top: 1px solid aliceblue;
   width: 1%;
   margin: 0.12%;
-  margin-top: 0;
+  margin-top: 0rem;
 }
 
 main div span#input {

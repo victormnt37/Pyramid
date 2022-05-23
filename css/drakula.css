@@ -12,7 +12,7 @@ header {
 }
 
 header div#a {
-  border-top: 1px solid red;
+  border-top: 2px solid red;
 }
 
 footer div button {

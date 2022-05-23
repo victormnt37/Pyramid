@@ -27,6 +27,12 @@ function insertLetter(event, input) {
   }
 }
 
+function createLetters() {
+  const letters = ['p', 'y', 'r', 'a', 'm', 'i', 'd'];
+
+  return letters;
+}
+
 /************ ADJUSTMENTS AND INFO ************/
 
 addUpperDivs();
@@ -65,25 +71,14 @@ function addUpperDivs() {
 createButtons();
 
 function createButtons() {
-  const letter1 = document.querySelector('button#letter1'),
-    letter2 = document.querySelector('button#letter2'),
-    letter3 = document.querySelector('button#letter3'),
-    letter4 = document.querySelector('button#letter4'),
-    letter5 = document.querySelector('button#letter5'),
-    letter6 = document.querySelector('button#letter6'),
-    letter7 = document.querySelector('button#letter7'),
-    deleteButton = document.querySelector('footer div i.fa-delete-left'),
+  const letters = createLetters();
+
+  appendLetters(letters);
+
+  const deleteButton = document.querySelector('footer div i.fa-delete-left'),
     enterButton = document.querySelector('footer div i.fa-check'),
     moveButton = document.querySelector('footer div i.fa-arrows-rotate'),
     shareButton = document.querySelector('footer div i.fa-share');
-
-  letterAdder(letter1);
-  letterAdder(letter2);
-  letterAdder(letter3);
-  letterAdder(letter4);
-  letterAdder(letter5);
-  letterAdder(letter6);
-  letterAdder(letter7);
 
   deleteButton.addEventListener('click', () => {
     deleteLetter();
@@ -94,7 +89,7 @@ function createButtons() {
   });
 
   moveButton.addEventListener('click', () => {
-    moveLetters(letter1, letter2, letter3, letter4, letter5, letter6, letter7);
+    moveLetters(letters);
   });
 
   shareButton.addEventListener('click', () => {});
@@ -115,6 +110,15 @@ function letterAdder(letter) {
   });
 }
 
+function appendLetters(letters) {
+  for (let i = 0; i < letters.length; i++) {
+    let j = i + 1;
+    const letter = document.querySelector('button#letter' + j);
+    letter.innerHTML = letters[i];
+    letterAdder(letter);
+  }
+}
+
 function deleteLetter() {
   let array = document
     .querySelector('main')
@@ -128,17 +132,7 @@ function deleteLetter() {
     array.join('');
 }
 
-function moveLetters(l1, l2, l3, l4, l5, l6, l7) {
-  const letters = [
-    l1.innerHTML,
-    l2.innerHTML,
-    l3.innerHTML,
-    l4.innerHTML,
-    l5.innerHTML,
-    l6.innerHTML,
-    l7.innerHTML,
-  ];
-
+function moveLetters(letters) {
   let currentIndex = letters.length,
     temporaryValue,
     randomIndex;

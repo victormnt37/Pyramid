@@ -1,0 +1,26 @@
+* {
+  color: purple;
+}
+
+body {
+  background-color: lightpink;
+  background-image: linear-gradient(lightyellow, lightpink);
+  background-repeat: no-repeat;
+}
+
+header {
+  background-color: lightyellow;
+  box-shadow: 10px 20px 20px lightyellow;
+}
+
+header div#a {
+  border-top: 2px solid purple;
+}
+
+footer div button {
+  border: 2px solid purple;
+}
+
+div#line {
+  border-top: solid purple;
+}

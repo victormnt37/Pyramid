@@ -14,21 +14,11 @@ header {
 }
 
 header div#a {
-  border-top: 1px solid black;
+  border-top: 2px solid black;
 }
 
 footer div button {
   border: 2px solid black;
-}
-
-div#info button,
-div#adjust button {
-  color: white;
-}
-
-div#info p,
-div#adjust p {
-  color: white;
 }
 
 div#line {
