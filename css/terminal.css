@@ -19,9 +19,14 @@ footer div button {
   border: 2px solid chartreuse;
 }
 
-div#info button,
-div#adjust button {
-  color: black;
+div#info h2,
+div#adjust h2 {
+  color: aliceblue;
+}
+
+div#info p,
+div#adjust p {
+  color: aliceblue;
 }
 
 div#line {

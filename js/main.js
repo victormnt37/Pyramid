@@ -202,3 +202,7 @@ function createLines(main) {
     div.appendChild(line);
   }
 }
+
+/************ STYLES ************/
+
+const cssLink = document.createElement('link');

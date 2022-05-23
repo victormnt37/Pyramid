@@ -21,7 +21,17 @@ footer div button {
 
 div#info button,
 div#adjust button {
-  color: rgb(82, 72, 90);
+  color: aliceblue;
+}
+
+div#info h2,
+div#adjust h2 {
+  color: aliceblue;
+}
+
+div#info p,
+div#adjust p {
+  color: aliceblue;
 }
 
 div#line {
