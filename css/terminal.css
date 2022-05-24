@@ -32,3 +32,11 @@ div#adjust p {
 div#line {
   border-top: solid chartreuse;
 }
+
+div#adjust button#terminal {
+  opacity: 0.5;
+}
+
+div#adjust button#classic {
+  opacity: 1;
+}

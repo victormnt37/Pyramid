@@ -130,11 +130,16 @@ div#adjust button {
 div#info button#exit,
 div#adjust button#exit {
   margin: 0;
+  margin-left: 10%;
   padding: 0;
   color: aliceblue;
   font-size: 2rem;
   background-color: transparent;
   border: none;
+}
+
+div#adjust button#exit {
+  margin-left: 90%;
 }
 
 div#info p,
@@ -145,6 +150,7 @@ div#adjust p {
 div#adjust button#classic {
   background-color: darkslategray;
   color: aliceblue;
+  opacity: 0.5;
 }
 
 div#adjust button#desert {

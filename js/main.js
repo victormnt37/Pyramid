@@ -29,7 +29,7 @@ function insertLetter(event, input) {
 
 function createLetters() {
   const letters = ['p', 'y', 'r', 'a', 'm', 'i', 'd'];
-
+  //TODO: Get the words from a daily letters randomizer. Also get the lenght of the longest word possible
   return letters;
 }
 
@@ -85,7 +85,7 @@ function createButtons() {
   });
 
   enterButton.addEventListener('click', () => {
-    verifyRow(); //Añadir función delay?
+    verifyRow(); //TODO: Añadir función delay?
   });
 
   moveButton.addEventListener('click', () => {
@@ -157,10 +157,12 @@ function verifyRow() {
   const word =
     document.querySelector('main').lastElementChild.previousElementSibling
       .firstElementChild.innerHTML;
-  if (word.length === row) {
-    getWord(word); //TODO: Verify if the word has the correct letters
+  if (word.length === row && filterLetters(word) == false) {
+    getWord(word);
   } else if (word.length < row) {
     alert('Not long enought');
+  } else if (filterLetters(word) > 0) {
+    alert('Wrong letters');
   }
 }
 
@@ -173,8 +175,23 @@ async function getWord(word) {
     const json = await resp.json();
     createRow();
   } else if (!resp.ok) {
+    alert('That word does not exist :/');
     return;
   }
+}
+
+function filterLetters(word) {
+  //Checks if the word uses the letters of the day. Returns 0 if correct, > 0 if wrong letters
+  let result = 0;
+  const letters = createLetters();
+  const wordArray = word.split('');
+  for (let i = 0; i < wordArray.length; i++) {
+    if (letters.indexOf(wordArray[i]) < 0) {
+      result++;
+    }
+  }
+
+  return result;
 }
 
 function createRow() {
