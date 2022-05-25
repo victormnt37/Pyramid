@@ -163,6 +163,9 @@ function verifyRow() {
     alert('Not long enought');
   } else if (filterLetters(word) > 0) {
     alert('Wrong letters');
+    document.querySelector(
+      'main'
+    ).lastElementChild.previousElementSibling.firstElementChild.innerHTML = '';
   }
 }
 
@@ -170,12 +173,15 @@ async function getWord(word) {
   const resp = await fetch(
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
   );
-  //TODO: Al presionar Enter repetidas veces se crean muchas rows en blanco
+  //TODO: Al presionar Enter repetidas veces se crean muchas rows en blanco. Y al presionar enter y retroceder a la vez verifica la palabra con 1 valor menos
   if (resp.ok) {
     const json = await resp.json();
     createRow();
   } else if (!resp.ok) {
-    alert('That word does not exist :/');
+    alert('"' + word + '" does not exist :/');
+    document.querySelector(
+      'main'
+    ).lastElementChild.previousElementSibling.firstElementChild.innerHTML = '';
     return;
   }
 }
@@ -255,3 +261,6 @@ function createStylesButtons() {
 
 /************ COOKIES ************/
 //TODO: cookies
+// - Streack
+// - Words gessed of that day
+// - Style selection

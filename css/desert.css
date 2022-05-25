@@ -31,8 +31,8 @@ div#adjust p {
   color: aliceblue;
 }
 
-div#line {
-  border-top: solid black;
+main div#line {
+  border-top: 1px solid black;
 }
 
 div#adjust button#desert {

@@ -63,7 +63,7 @@ main div#row {
   min-height: 1.3rem;
 }
 
-div#line {
+main div#line {
   justify-content: left;
   border-top: 1px solid aliceblue;
   width: 1%;
@@ -84,7 +84,6 @@ main div span#input {
 
 footer {
   margin-top: 2rem;
-  /* border: 1px solid black; */
 }
 
 footer div {
@@ -172,4 +171,23 @@ div#adjust button#terminal {
 div#adjust button#cake {
   background-image: linear-gradient(lightyellow, lightpink);
   color: purple;
+}
+
+@media only screen and (max-width: 600px) {
+  * {
+    font-size: 7vw;
+  }
+
+  header h1 {
+    font-size: 13vw;
+  }
+
+  main div#line {
+    width: 3.7%;
+    margin: 1px;
+  }
+
+  footer {
+    margin-top: 7rem;
+  }
 }

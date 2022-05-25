@@ -29,8 +29,8 @@ div#adjust p {
   color: aliceblue;
 }
 
-div#line {
-  border-top: solid red;
+main div#line {
+  border-top: 1px solid red;
 }
 
 div#adjust button#dracula {
