@@ -1,0 +1,42 @@
+* {
+  color: black;
+}
+
+body {
+  background-color: white;
+}
+
+header {
+  background-color: white;
+  box-shadow: 10px 20px 20px white;
+}
+
+header div.a {
+  border-top: 2px solid black;
+}
+
+footer div button {
+  border: 2px solid black;
+}
+
+div#info h2,
+div#adjust h2 {
+  color: aliceblue;
+}
+
+div#info p,
+div#adjust p {
+  color: aliceblue;
+}
+
+main div#line {
+  border-top: 1px solid black;
+}
+
+div#adjust button#dracula {
+  opacity: 0.5;
+}
+
+div#adjust button#classic {
+  opacity: 1;
+}
