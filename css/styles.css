@@ -147,6 +147,12 @@ div#adjust p {
   margin: 0.5rem;
 }
 
+div#info p a,
+div#adjust p a {
+  color: aliceblue;
+  text-decoration: underline;
+}
+
 div#adjust button#classic {
   background-color: darkslategray;
   color: aliceblue;

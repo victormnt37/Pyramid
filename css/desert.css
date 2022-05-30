@@ -31,6 +31,12 @@ div#adjust p {
   color: aliceblue;
 }
 
+div#info p a,
+div#adjust p a {
+  color: aliceblue;
+  text-decoration: underline;
+}
+
 main div#line {
   border-top: 1px solid black;
 }

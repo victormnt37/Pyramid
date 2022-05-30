@@ -155,7 +155,6 @@ function verifyRow(letters) {
   const word =
     document.querySelector('main').lastElementChild.previousElementSibling
       .firstElementChild.innerHTML;
-  console.log(letters);
   if (word.length === letters.row && filterLetters(word, letters) == false) {
     getWord(word, letters);
   } else if (word.length < letters.row) {
@@ -171,18 +170,23 @@ function verifyRow(letters) {
 async function getWord(word, letters) {
   const resp = await fetch(
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
-  );
-  //TODO: Al presionar Enter repetidas veces se crean muchas rows en blanco. Y al presionar enter y retroceder a la vez verifica la palabra con 1 valor menos
-  if (resp.ok) {
-    const json = await resp.json();
-    createRow(letters);
-  } else if (!resp.ok) {
-    alert('"' + word + '" does not exist :/');
-    document.querySelector(
-      'main'
-    ).lastElementChild.previousElementSibling.firstElementChild.innerHTML = '';
-    return;
-  }
+  ).then((resp) => {
+    if (resp.ok && letters.row < letters.maxLength) {
+      //const json = await resp.json();
+      createRow(letters);
+    } else if (!resp.ok) {
+      alert('"' + word + '" does not exist :/');
+      document.querySelector(
+        'main'
+      ).lastElementChild.previousElementSibling.firstElementChild.innerHTML =
+        '';
+      return;
+    } else if (resp.ok && letters.row >= letters.maxLength) {
+      alert('Congrats! You made it');
+    }
+  });
+  //TODO: Al presionar Enter repetidas veces se crean muchas rows en blanco.
+  //Y al presionar enter y retroceder a la vez verifica la palabra con 1 valor menos
 }
 
 function filterLetters(word, letters) {
