@@ -39,9 +39,3 @@ createButtons(letters);
 /************ STYLES ************/
 
 createStylesButtons();
-
-/************ COOKIES ************/
-//TODO: cookies
-// - Streack
-// - Words gessed of that day
-// - Style selection

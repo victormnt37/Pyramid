@@ -3,12 +3,14 @@
 }
 
 body {
-  background-color: rgb(82, 72, 90);
+  background-color: black;
+  background-image: linear-gradient(rgb(82, 72, 90), black);
+  background-repeat: no-repeat;
 }
 
 header {
-  background-color: rgb(82, 72, 90);
-  box-shadow: 10px 20px 20px rgb(82, 72, 90);
+  background-color: transparent;
+  box-shadow: 10px 20px 20px transparent;
 }
 
 header div.a {

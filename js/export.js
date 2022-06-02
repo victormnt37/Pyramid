@@ -139,14 +139,14 @@ function createButtons(letters) {
   });
 
   enterButton.addEventListener('click', () => {
-    verifyRow(); //TODO: Añadir función delay?
+    verifyRow(letters); //TO-DO: Añadir función delay?
   });
 
   moveButton.addEventListener('click', () => {
     moveLetters(letters.letters);
   });
 
-  shareButton.addEventListener('click', () => {}); //TODO
+  shareButton.addEventListener('click', () => {}); //TO-DO
 }
 
 /************ CREATE NEW ROW ************/
@@ -158,9 +158,9 @@ function verifyRow(letters) {
   if (word.length === letters.row && filterLetters(word, letters) == false) {
     getWord(word, letters);
   } else if (word.length < letters.row) {
-    alert('Not long enought');
+    showMessage('Not long enought', 'red');
   } else if (filterLetters(word, letters) > 0) {
-    alert('Wrong letters');
+    showMessage('Wrong letters', 'red');
     document.querySelector(
       'main'
     ).lastElementChild.previousElementSibling.firstElementChild.innerHTML = '';
@@ -170,22 +170,20 @@ function verifyRow(letters) {
 async function getWord(word, letters) {
   const resp = await fetch(
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
-  ).then((resp) => {
-    if (resp.ok && letters.row < letters.maxLength) {
-      //const json = await resp.json();
-      createRow(letters);
-    } else if (!resp.ok) {
-      alert('"' + word + '" does not exist :/');
-      document.querySelector(
-        'main'
-      ).lastElementChild.previousElementSibling.firstElementChild.innerHTML =
-        '';
-      return;
-    } else if (resp.ok && letters.row >= letters.maxLength) {
-      alert('Congrats! You made it');
-    }
-  });
-  //TODO: Al presionar Enter repetidas veces se crean muchas rows en blanco.
+  );
+  if (resp.ok && letters.row < letters.maxLength) {
+    //const json = await resp.json();
+    createRow(letters);
+  } else if (!resp.ok) {
+    showMessage('"' + word + '" does not exist :/', 'red');
+    document.querySelector(
+      'main'
+    ).lastElementChild.previousElementSibling.firstElementChild.innerHTML = '';
+    return;
+  } else if (resp.ok && letters.row >= letters.maxLength) {
+    alert('Congrats! You made it'); //TO-DO: game finished
+  }
+  //TO-DO: Al presionar Enter repetidas veces se crean muchas rows en blanco.
   //Y al presionar enter y retroceder a la vez verifica la palabra con 1 valor menos
 }
 
@@ -200,6 +198,31 @@ function filterLetters(word, letters) {
   }
 
   return result;
+}
+
+function showMessage(message, color) {
+  const divMessage = document.createElement('div');
+
+  divMessage.id = 'message';
+  divMessage.innerHTML = message;
+  divMessage.style.backgroundColor = color;
+
+  document.body.appendChild(divMessage);
+
+  fade(divMessage);
+}
+
+function fade(element) {
+  let op = 1; // initial opacity
+  let timer = setInterval(function () {
+    if (op <= 0.1) {
+      clearInterval(timer);
+      element.remove();
+    }
+    element.style.opacity = op;
+    element.style.filter = 'alpha(opacity=' + op * 100 + ')';
+    op -= op * 0.1;
+  }, 50);
 }
 
 function createRow(letters) {
@@ -227,6 +250,13 @@ function createLines(main, letters) {
     div.appendChild(line);
   }
 }
+
+/************ COOKIE ************/
+
+//TO-DO: cookies
+// - Streack
+// - Words gessed of that day
+// - Style selection
 
 /************ STYLES ************/
 
