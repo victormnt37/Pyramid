@@ -1,8 +1,8 @@
 import json from '../json/letters.json' assert { type: 'json' };
+// const json = fetch('../json/letters.json'); //TO-DO: una vez subido al host, hacer un fetch?
 
 export {
   insertLetter,
-  processKey,
   verifyRow,
   createLetters,
   addUpperDivs,
@@ -152,35 +152,12 @@ function createButtons(letters) {
 
 /************ CREATE NEW ROW ************/
 
-function processKey(event, letters) {
-  const input =
-    document.querySelector('main').lastElementChild.previousElementSibling
-      .firstElementChild;
-
-  if (input.innerHTML.length < letters.row) {
-    insertLetter(event, input);
-  }
-
-  if (event.key === 'Backspace') {
-    deleteLetter();
-  }
-
-  if (event.key === 'Enter') {
-    console.log('Enter');
-
-    verifyRow(letters);
-
-    window.removeEventListener('keydown', (event) => {
-      processKey(event, letters);
-    });
-  }
-}
-
 function verifyRow(letters) {
-  const word =
-    document.querySelector('main').lastElementChild.previousElementSibling
-      .firstElementChild.innerHTML;
+  const wordSpan = document.querySelector('main div#row span.selected');
+  const word = wordSpan.innerHTML;
+  console.log(word);
   if (word.length === letters.row && filterLetters(word, letters) == false) {
+    wordSpan.classList.remove('selected');
     getWord(word, letters);
   } else if (word.length < letters.row) {
     showMessage('Not long enought', 'red');
@@ -196,7 +173,6 @@ async function getWord(word, letters) {
   const resp = await fetch(
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
   );
-  console.log(word.length);
   if (resp.ok && letters.row < letters.maxLength && word.length > 2) {
     //const json = await resp.json();
     createRow(letters);
@@ -209,9 +185,6 @@ async function getWord(word, letters) {
   } else if (resp.ok && letters.row >= letters.maxLength) {
     alert('Congrats! You made it'); //TO-DO: game finished
   }
-  window.addEventListener('keydown', (event) => {
-    processKey(event, letters);
-  });
   //TO-DO: Al presionar Enter repetidas veces se crean muchas rows en blanco.
   //Y al presionar enter y retroceder a la vez verifica la palabra con 1 valor menos
 }
@@ -265,6 +238,7 @@ function createRow(letters) {
   rowDiv.id = 'row';
   rowDiv.appendChild(span);
   span.id = 'input';
+  span.className = 'selected';
 
   createLines(main, letters);
 }
