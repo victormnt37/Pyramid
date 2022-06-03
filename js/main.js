@@ -1,5 +1,6 @@
 import {
   insertLetter,
+  processKey,
   verifyRow,
   createLetters,
   addUpperDivs,
@@ -11,21 +12,7 @@ import {
 const letters = createLetters();
 
 window.addEventListener('keydown', (event) => {
-  const input =
-    document.querySelector('main').lastElementChild.previousElementSibling
-      .firstElementChild;
-
-  if (input.innerHTML.length < letters.row) {
-    insertLetter(event, input);
-  }
-
-  if (event.key === 'Backspace') {
-    deleteLetter();
-  }
-
-  if (event.key === 'Enter') {
-    verifyRow(letters);
-  }
+  processKey(event, letters);
 });
 
 /************ ADJUSTMENTS AND INFO ************/

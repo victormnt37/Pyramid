@@ -2,6 +2,7 @@ import json from '../json/letters.json' assert { type: 'json' };
 
 export {
   insertLetter,
+  processKey,
   verifyRow,
   createLetters,
   addUpperDivs,
@@ -151,6 +152,30 @@ function createButtons(letters) {
 
 /************ CREATE NEW ROW ************/
 
+function processKey(event, letters) {
+  const input =
+    document.querySelector('main').lastElementChild.previousElementSibling
+      .firstElementChild;
+
+  if (input.innerHTML.length < letters.row) {
+    insertLetter(event, input);
+  }
+
+  if (event.key === 'Backspace') {
+    deleteLetter();
+  }
+
+  if (event.key === 'Enter') {
+    console.log('Enter');
+
+    verifyRow(letters);
+
+    window.removeEventListener('keydown', (event) => {
+      processKey(event, letters);
+    });
+  }
+}
+
 function verifyRow(letters) {
   const word =
     document.querySelector('main').lastElementChild.previousElementSibling
@@ -171,7 +196,8 @@ async function getWord(word, letters) {
   const resp = await fetch(
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
   );
-  if (resp.ok && letters.row < letters.maxLength) {
+  console.log(word.length);
+  if (resp.ok && letters.row < letters.maxLength && word.length > 2) {
     //const json = await resp.json();
     createRow(letters);
   } else if (!resp.ok) {
@@ -183,6 +209,9 @@ async function getWord(word, letters) {
   } else if (resp.ok && letters.row >= letters.maxLength) {
     alert('Congrats! You made it'); //TO-DO: game finished
   }
+  window.addEventListener('keydown', (event) => {
+    processKey(event, letters);
+  });
   //TO-DO: Al presionar Enter repetidas veces se crean muchas rows en blanco.
   //Y al presionar enter y retroceder a la vez verifica la palabra con 1 valor menos
 }
