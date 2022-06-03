@@ -6,6 +6,7 @@ import {
   deleteLetter,
   createButtons,
   createStylesButtons,
+  useSelectedTheme,
 } from './export.js';
 
 const letters = createLetters();
@@ -25,6 +26,10 @@ window.addEventListener('keydown', (event) => {
     verifyRow(letters);
   }
 });
+
+/************ LOCAL STORAGE ************/
+
+useSelectedTheme();
 
 /************ ADJUSTMENTS AND INFO ************/
 

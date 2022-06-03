@@ -3,14 +3,14 @@
 }
 
 body {
-  background-color: darkorange;
-  background-image: linear-gradient(yellow, darkorange);
+  background-color: #d5864e;
+  background-image: linear-gradient(#b0c9a4, #d5864e);
   background-repeat: no-repeat;
 }
 
 header {
-  background-color: #ffeb00;
-  box-shadow: 10px 20px 20px #ffeb00;
+  background-color: transparent;
+  box-shadow: 10px 20px 20px transparent;
 }
 
 header div.a {

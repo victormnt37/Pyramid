@@ -9,7 +9,10 @@ export {
   deleteLetter,
   createButtons,
   createStylesButtons,
+  useSelectedTheme,
 };
+
+/************ DATA ************/
 
 function createLetters() {
   const date = new Date();
@@ -20,6 +23,8 @@ function createLetters() {
 
   const currentDate = day + '/' + month + '/' + year;
 
+  storeDate(currentDate);
+
   for (let i = 0; i < json.dailyLetters.length; i++) {
     if (json.dailyLetters[i].date == currentDate) {
       json.dailyLetters[i].row = 3;
@@ -28,11 +33,21 @@ function createLetters() {
   }
 }
 
-function insertLetter(event, input) {
-  const regexp = new RegExp('^[a-zA-Zs]*$');
-  if (event.key.match(regexp) && event.key.length === 1) {
-    input.innerHTML = input.innerHTML + event.key;
+function storeDate(date) {
+  const words = [date];
+  localStorage.setItem('date', words);
+  const currentDate = localStorage.getItem('date');
+  console.log(currentDate);
+}
+
+function useSelectedTheme() {
+  let theme = localStorage.getItem('theme');
+  if (!theme) {
+    theme = 'styles';
   }
+
+  const cssLink = document.head.lastElementChild;
+  cssLink.href = '../css/' + theme + '.css';
 }
 
 /************ ADJUSTMENTS AND INFO ************/
@@ -67,6 +82,13 @@ function addUpperDivs() {
 }
 
 /************ LETTER'S BUTTONS ************/
+
+function insertLetter(event, input) {
+  const regexp = new RegExp('^[a-zA-Zs]*$');
+  if (event.key.match(regexp) && event.key.length === 1) {
+    input.innerHTML = input.innerHTML + event.key;
+  }
+}
 
 function addLetter(letter, letters) {
   const input =
@@ -151,7 +173,6 @@ function createButtons(letters) {
 function verifyRow(letters) {
   const wordSpan = document.querySelector('main div#row span.selected');
   const word = wordSpan.innerHTML;
-  console.log(word);
   if (word.length === letters.row && filterLetters(word, letters) == false) {
     wordSpan.classList.remove('selected');
     getWord(wordSpan, word, letters);
@@ -266,25 +287,30 @@ function createStylesButtons() {
   const classicButton = document.querySelector('div#adjust button#classic');
   classicButton.addEventListener('click', () => {
     cssLink.href = '../css/styles.css';
+    localStorage.setItem('theme', 'styles');
   });
 
   const desertButton = document.querySelector('div#adjust button#desert');
   desertButton.addEventListener('click', () => {
     cssLink.href = '../css/desert.css';
+    localStorage.setItem('theme', 'desert');
   });
 
   const draculaButton = document.querySelector('div#adjust button#dracula');
   draculaButton.addEventListener('click', () => {
     cssLink.href = '../css/dracula.css';
+    localStorage.setItem('theme', 'dracula');
   });
 
   const terminalButton = document.querySelector('div#adjust button#terminal');
   terminalButton.addEventListener('click', () => {
     cssLink.href = '../css/terminal.css';
+    localStorage.setItem('theme', 'terminal');
   });
 
   const cakeButton = document.querySelector('div#adjust button#cake');
   cakeButton.addEventListener('click', () => {
     cssLink.href = '../css/cake.css';
+    localStorage.setItem('theme', 'cake');
   });
 }
