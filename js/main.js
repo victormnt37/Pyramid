@@ -21,11 +21,7 @@ window.addEventListener('keydown', (event) => {
 
   if (event.key === 'Backspace') {
     deleteLetter();
-  }
-
-  if (event.key === 'Enter') {
-    console.log('Enter');
-
+  } else if (event.key === 'Enter') {
     verifyRow(letters);
   }
 });

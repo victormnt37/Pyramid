@@ -95,14 +95,10 @@ function appendLetters(letters) {
 
 function deleteLetter() {
   let array = document
-    .querySelector('main')
-    .lastElementChild.previousElementSibling.firstElementChild.innerHTML.split(
-      ''
-    );
+    .querySelector('main div#row span.selected')
+    .innerHTML.split('');
   array.pop();
-  document.querySelector(
-    'main'
-  ).lastElementChild.previousElementSibling.firstElementChild.innerHTML =
+  document.querySelector('main div#row span.selected').innerHTML =
     array.join('');
 }
 
@@ -158,7 +154,7 @@ function verifyRow(letters) {
   console.log(word);
   if (word.length === letters.row && filterLetters(word, letters) == false) {
     wordSpan.classList.remove('selected');
-    getWord(word, letters);
+    getWord(wordSpan, word, letters);
   } else if (word.length < letters.row) {
     showMessage('Not long enought', 'red');
   } else if (filterLetters(word, letters) > 0) {
@@ -169,7 +165,7 @@ function verifyRow(letters) {
   }
 }
 
-async function getWord(word, letters) {
+async function getWord(wordSpan, word, letters) {
   const resp = await fetch(
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
   );
@@ -181,6 +177,7 @@ async function getWord(word, letters) {
     document.querySelector(
       'main'
     ).lastElementChild.previousElementSibling.firstElementChild.innerHTML = '';
+    wordSpan.className = 'selected';
     return;
   } else if (resp.ok && letters.row >= letters.maxLength) {
     alert('Congrats! You made it'); //TO-DO: game finished
