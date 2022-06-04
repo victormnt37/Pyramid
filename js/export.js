@@ -10,11 +10,12 @@ export {
   createButtons,
   createStylesButtons,
   useSelectedTheme,
+  storeData,
 };
 
 /************ DATA ************/
 
-function createLetters() {
+function getDate() {
   const date = new Date();
   const day = date.getDate();
   let month = date.getMonth();
@@ -23,7 +24,11 @@ function createLetters() {
 
   const currentDate = day + '/' + month + '/' + year;
 
-  storeData(currentDate);
+  return currentDate;
+}
+
+function createLetters() {
+  const currentDate = getDate();
 
   for (let i = 0; i < json.dailyLetters.length; i++) {
     if (json.dailyLetters[i].date == currentDate) {
@@ -33,7 +38,9 @@ function createLetters() {
   }
 }
 
-function storeData(date) {
+function storeData(letters) {
+  const date = getDate();
+
   //Here storing the date and the words
   const lastWords = localStorage.getItem('words');
 
@@ -42,16 +49,32 @@ function storeData(date) {
     localStorage.setItem('words', date); // 'words' will store the date in first possition and the words the user guessed
   } else {
     const arr = lastWords.split(',');
-    console.log(arr);
     if (arr[0] == date) {
       //Same day
+      if (arr.length > 1) {
+        addStoredWords(arr, letters);
+      }
     } else {
       //Different day
       localStorage.setItem('words', date);
     }
   }
-  const storedWords = localStorage.getItem('words');
-  console.log(storedWords);
+}
+
+function addStoredWords(arr, letters) {
+  arr.shift();
+  arr.forEach((element) => {
+    const wordSpan = document.querySelector('main div#row span.selected');
+    wordSpan.innerHTML = element;
+    wordSpan.classList.remove('selected');
+
+    createRow(letters);
+
+    if (letters.maxLength < letters.row) {
+      document.querySelector('main').lastElementChild.remove();
+      document.querySelector('main').lastElementChild.remove();
+    }
+  });
 }
 
 function useSelectedTheme() {
@@ -205,10 +228,15 @@ async function getWord(wordSpan, word, letters) {
     'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
   );
   if (resp.ok && letters.row < letters.maxLength && word.length > 2) {
-    //const json = await resp.json();
     createRow(letters);
+
+    //Save the word in the local storage
+    let storedWords = localStorage.getItem('words');
+    storedWords += ',' + word;
+    localStorage.setItem('words', storedWords);
   } else if (!resp.ok) {
     showMessage('"' + word + '" does not exist :/', 'red');
+
     document.querySelector(
       'main'
     ).lastElementChild.previousElementSibling.firstElementChild.innerHTML = '';
@@ -216,6 +244,11 @@ async function getWord(wordSpan, word, letters) {
     return;
   } else if (resp.ok && letters.row >= letters.maxLength) {
     alert('Congrats! You made it'); //TO-DO: game finished
+
+    //Save the word in the local storage
+    let storedWords = localStorage.getItem('words');
+    storedWords += ',' + word;
+    localStorage.setItem('words', storedWords);
   }
 }
 
@@ -228,7 +261,6 @@ function filterLetters(word, letters) {
       result++;
     }
   }
-
   return result;
 }
 

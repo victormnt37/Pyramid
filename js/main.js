@@ -7,14 +7,17 @@ import {
   createButtons,
   createStylesButtons,
   useSelectedTheme,
+  storeData,
 } from './export.js';
 
 const letters = createLetters();
 
 window.addEventListener('keydown', (event) => {
-  const input =
-    document.querySelector('main').lastElementChild.previousElementSibling
-      .firstElementChild;
+  const input = document.querySelector('main div#row span.selected');
+
+  if (!input) {
+    return;
+  }
 
   if (input.innerHTML.length < letters.row) {
     insertLetter(event, input);
@@ -29,6 +32,7 @@ window.addEventListener('keydown', (event) => {
 
 /************ LOCAL STORAGE ************/
 
+storeData(letters);
 useSelectedTheme();
 
 /************ ADJUSTMENTS AND INFO ************/
