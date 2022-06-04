@@ -1,5 +1,5 @@
 import json from '../json/letters.json' assert { type: 'json' };
-// const json = fetch('../json/letters.json'); //TO-DO: una vez subido al host, hacer un fetch?
+// const json = fetch('../json/letters.json'); //una vez subido al host, hacer un fetch?
 
 export {
   insertLetter,
@@ -23,7 +23,7 @@ function createLetters() {
 
   const currentDate = day + '/' + month + '/' + year;
 
-  storeDate(currentDate);
+  storeData(currentDate);
 
   for (let i = 0; i < json.dailyLetters.length; i++) {
     if (json.dailyLetters[i].date == currentDate) {
@@ -33,11 +33,25 @@ function createLetters() {
   }
 }
 
-function storeDate(date) {
-  const words = [date];
-  localStorage.setItem('date', words);
-  const currentDate = localStorage.getItem('date');
-  console.log(currentDate);
+function storeData(date) {
+  //Here storing the date and the words
+  const lastWords = localStorage.getItem('words');
+
+  if (!lastWords) {
+    //First time playing
+    localStorage.setItem('words', date); // 'words' will store the date in first possition and the words the user guessed
+  } else {
+    const arr = lastWords.split(',');
+    console.log(arr);
+    if (arr[0] == date) {
+      //Same day
+    } else {
+      //Different day
+      localStorage.setItem('words', date);
+    }
+  }
+  const storedWords = localStorage.getItem('words');
+  console.log(storedWords);
 }
 
 function useSelectedTheme() {
@@ -158,7 +172,7 @@ function createButtons(letters) {
   });
 
   enterButton.addEventListener('click', () => {
-    verifyRow(letters); //TO-DO: Añadir función delay?
+    verifyRow(letters);
   });
 
   moveButton.addEventListener('click', () => {
@@ -203,8 +217,6 @@ async function getWord(wordSpan, word, letters) {
   } else if (resp.ok && letters.row >= letters.maxLength) {
     alert('Congrats! You made it'); //TO-DO: game finished
   }
-  //TO-DO: Al presionar Enter repetidas veces se crean muchas rows en blanco.
-  //Y al presionar enter y retroceder a la vez verifica la palabra con 1 valor menos
 }
 
 function filterLetters(word, letters) {
@@ -271,13 +283,6 @@ function createLines(main, letters) {
     div.appendChild(line);
   }
 }
-
-/************ COOKIE ************/
-
-//TO-DO: cookies
-// - Streack
-// - Words gessed of that day
-// - Style selection
 
 /************ STYLES ************/
 
