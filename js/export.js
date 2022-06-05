@@ -1,6 +1,3 @@
-import json from '../json/letters.json' assert { type: 'json' };
-// const json = fetch('../json/letters.json'); //una vez subido al host, hacer un fetch?
-
 export {
   insertLetter,
   verifyRow,
@@ -14,6 +11,17 @@ export {
 };
 
 /************ DATA ************/
+
+getJSON('../json/letters.json').then((data) => {
+  sessionStorage.setItem('letters', JSON.stringify(data));
+});
+
+const json = JSON.parse(sessionStorage.getItem('letters'));
+console.log(json);
+
+function getJSON(path) {
+  return fetch(path).then((response) => response.json());
+}
 
 function getDate() {
   const date = new Date();
