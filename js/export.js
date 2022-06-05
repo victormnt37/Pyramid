@@ -98,8 +98,12 @@ function addUpperDivs() {
   const adjustButton = document.querySelector('i.fa-solid.fa-gear');
   const adjustEsc = document.querySelector('div#adjust button');
 
+  const end = document.querySelector('div#end');
+  const endEsc = document.querySelector('div#end button');
+
   info.hidden = true;
   adjust.hidden = true;
+  end.hidden = true;
 
   infoButton.addEventListener('click', () => {
     info.hidden = false;
@@ -115,6 +119,10 @@ function addUpperDivs() {
 
   adjustEsc.addEventListener('click', () => {
     adjust.hidden = true;
+  });
+
+  endEsc.addEventListener('click', () => {
+    end.hidden = true;
   });
 }
 
@@ -230,10 +238,7 @@ async function getWord(wordSpan, word, letters) {
   if (resp.ok && letters.row < letters.maxLength && word.length > 2) {
     createRow(letters);
 
-    //Save the word in the local storage
-    let storedWords = localStorage.getItem('words');
-    storedWords += ',' + word;
-    localStorage.setItem('words', storedWords);
+    storeWord(word);
   } else if (!resp.ok) {
     showMessage('"' + word + '" does not exist :/', 'red');
 
@@ -243,13 +248,30 @@ async function getWord(wordSpan, word, letters) {
     wordSpan.className = 'selected';
     return;
   } else if (resp.ok && letters.row >= letters.maxLength) {
-    alert('Congrats! You made it'); //TO-DO: game finished
-
-    //Save the word in the local storage
-    let storedWords = localStorage.getItem('words');
-    storedWords += ',' + word;
-    localStorage.setItem('words', storedWords);
+    storeWord(word);
+    storeVictory();
   }
+}
+
+function storeWord(word) {
+  let storedWords = localStorage.getItem('words');
+  storedWords += ',' + word;
+  localStorage.setItem('words', storedWords);
+}
+
+function storeVictory() {
+  let victories = localStorage.getItem('victories');
+  if (!victories) {
+    localStorage.setItem('victories', 1);
+  } else {
+    victories++;
+    localStorage.setItem('victories', victories);
+  }
+
+  document.querySelector('div#end p span#victories').innerHTML =
+    localStorage.getItem('victories');
+
+  document.querySelector('div#end').hidden = false;
 }
 
 function filterLetters(word, letters) {
@@ -277,7 +299,7 @@ function showMessage(message, color) {
 }
 
 function fade(element) {
-  let op = 1; // initial opacity
+  let op = 3;
   let timer = setInterval(function () {
     if (op <= 0.1) {
       clearInterval(timer);

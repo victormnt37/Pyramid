@@ -2,13 +2,13 @@
   "dailyLetters": [
     {
       "letters": ["p", "y", "r", "a", "m", "i", "d"],
-      "date": "4/6/2022",
+      "date": "5/6/2022",
       "maxLength": 9
     },
     {
       "letters": ["v", "i", "c", "t", "o", "r", "y"],
-      "date": "5/6/2022",
-      "maxLength": 9
+      "date": "6/6/2022",
+      "maxLength": 7
     }
   ]
 }
