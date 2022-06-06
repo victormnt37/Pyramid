@@ -8,7 +8,12 @@ import {
   createStylesButtons,
   useSelectedTheme,
   storeData,
+  getJSON,
 } from './export.js';
+
+getJSON('../json/letters.json').then((data) => {
+  sessionStorage.setItem('letters', JSON.stringify(data));
+});
 
 const letters = createLetters();
 
@@ -35,9 +40,15 @@ window.addEventListener('keydown', (event) => {
 storeData(letters);
 useSelectedTheme();
 
-/************ ADJUSTMENTS AND INFO ************/
+/************ ADJUSTMENTS, INFO & ENDING ************/
 
 addUpperDivs();
+
+if (letters.row >= letters.maxLength) {
+  document.querySelector('div#end').hidden = false;
+  document.querySelector('div#end p span#victories').innerHTML =
+    localStorage.getItem('victories');
+}
 
 /************ LETTER'S BUTTONS ************/
 

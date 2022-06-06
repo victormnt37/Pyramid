@@ -8,16 +8,10 @@ export {
   createStylesButtons,
   useSelectedTheme,
   storeData,
+  getJSON,
 };
 
 /************ DATA ************/
-
-getJSON('../json/letters.json').then((data) => {
-  sessionStorage.setItem('letters', JSON.stringify(data));
-});
-
-const json = JSON.parse(sessionStorage.getItem('letters'));
-console.log(json);
 
 function getJSON(path) {
   return fetch(path).then((response) => response.json());
@@ -37,6 +31,12 @@ function getDate() {
 
 function createLetters() {
   const currentDate = getDate();
+
+  const json = JSON.parse(sessionStorage.getItem('letters'));
+
+  if (!json) {
+    setTimeout('location.reload(true);', 100);
+  }
 
   for (let i = 0; i < json.dailyLetters.length; i++) {
     if (json.dailyLetters[i].date == currentDate) {

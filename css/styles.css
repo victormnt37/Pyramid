@@ -224,8 +224,21 @@ div#adjust button#cake {
   color: purple;
 }
 
-div#end div.tenor-gif-embed {
-  max-height: 10rem;
+div#end div#share {
+  display: flex;
+  justify-content: space-around;
+}
+
+div#end div#share div {
+  color: aliceblue;
+}
+
+div#end div#share div i {
+  color: aliceblue;
+}
+
+div#end span {
+  color: aliceblue;
 }
 
 /* MOBILE */
@@ -246,5 +259,21 @@ div#end div.tenor-gif-embed {
 
   footer {
     margin-top: 7rem;
+  }
+
+  div#info p {
+    font-size: 0.7rem;
+  }
+
+  div#info h2 {
+    font-size: 0.7rem;
+  }
+
+  div#info a {
+    font-size: 0.7rem;
+  }
+
+  div#adjust h2 {
+    font-size: 0.8rem;
   }
 }

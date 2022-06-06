@@ -2,12 +2,107 @@
   "dailyLetters": [
     {
       "letters": ["p", "y", "r", "a", "m", "i", "d"],
-      "date": "5/6/2022",
+      "date": "6/6/2022",
       "maxLength": 9
     },
     {
       "letters": ["v", "i", "c", "t", "o", "r", "y"],
-      "date": "6/6/2022",
+      "date": "7/6/2022",
+      "maxLength": 7
+    },
+    {
+      "letters": ["b", "a", "r", "v", "e", "c", "n"],
+      "date": "8/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["u", "i", "o", "p", "t", "r", "f"],
+      "date": "9/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["p", "a", "n", "y", "o", "l", "r"],
+      "date": "10/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["w", "y", "e", "h", "a", "t", "s"],
+      "date": "11/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["b", "a", "d", "h", "n", "l", "o"],
+      "date": "12/6/2022",
+      "maxLength": 8
+    },
+    {
+      "letters": ["c", "r", "i", "s", "v", "a", "o"],
+      "date": "13/6/2022",
+      "maxLength": 10
+    },
+    {
+      "letters": ["p", "y", "r", "a", "m", "i", "d"],
+      "date": "14/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["a", "i", "e", "s", "c", "r", "d"],
+      "date": "15/6/2022",
+      "maxLength": 11
+    },
+    {
+      "letters": ["a", "e", "o", "r", "s", "m", "t"],
+      "date": "16/6/2022",
+      "maxLength": 11
+    },
+    {
+      "letters": ["c", "u", "n", "t", "r", "y", "e"],
+      "date": "17/6/2022",
+      "maxLength": 10
+    },
+    {
+      "letters": ["v", "r", "o", "i", "d", "n", "a"],
+      "date": "18/6/2022",
+      "maxLength": 8
+    },
+    {
+      "letters": ["c", "d", "l", "u", "r", "o", "y"],
+      "date": "19/6/2022",
+      "maxLength": 8
+    },
+    {
+      "letters": ["t", "a", "r", "g", "d", "e", "y"],
+      "date": "20/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["g", "o", "c", "e", "t", "r", "n"],
+      "date": "21/6/2022",
+      "maxLength": 11
+    },
+    {
+      "letters": ["t", "r", "q", "e", "u", "i", "c"],
+      "date": "22/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["m", "a", "g", "e", "r", "n", "t"],
+      "date": "23/6/2022",
+      "maxLength": 11
+    },
+    {
+      "letters": ["k", "l", "o", "n", "a", "e", "w"],
+      "date": "24/6/2022",
+      "maxLength": 9
+    },
+    {
+      "letters": ["f", "l", "e", "t", "y", "n", "a"],
+      "date": "25/6/2022",
+      "maxLength": 11
+    },
+    {
+      "letters": ["c", "u", "n", "m", "p", "l", "e"],
+      "date": "26/6/2022",
       "maxLength": 7
     }
   ]
