@@ -120,19 +120,7 @@ div#message {
   margin-bottom: 0;
   border-radius: 1rem;
   font-size: 0.8rem;
-  animation: disapear 2 ease-out;
-}
-
-@keyframes disapear {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  color: aliceblue;
 }
 
 /* HEADER */
