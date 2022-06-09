@@ -21,6 +21,7 @@ window.addEventListener('keydown', (event) => {
   const input = document.querySelector('main div#row span.selected');
 
   if (!input) {
+    //There is a breve moment when there is not a span.selected in the document. That is when the word is being verified.
     return;
   }
 

@@ -230,7 +230,7 @@ function verifyRow(letters) {
     wordSpan.classList.remove('selected');
     getWord(wordSpan, word, letters);
   } else if (word.length < letters.row) {
-    showMessage('Not long enought', 'red');
+    showMessage('Not long enough', 'red');
   } else if (filterLetters(word, letters) > 0) {
     showMessage('Wrong letters', 'red');
     document.querySelector(

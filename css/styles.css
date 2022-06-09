@@ -17,6 +17,8 @@ body {
   min-height: 20rem;
 }
 
+/* HEADER */
+
 header {
   position: fixed;
   width: 100%;
@@ -123,7 +125,7 @@ div#message {
   color: aliceblue;
 }
 
-/* HEADER */
+/* MENUS */
 
 div#info,
 div#adjust,
