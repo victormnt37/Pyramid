@@ -17,6 +17,8 @@ getJSON('../json/letters.json').then((data) => {
 
 const letters = createLetters();
 
+/************ KEYBOARD EVENTS ************/
+
 window.addEventListener('keydown', (event) => {
   const input = document.querySelector('main div#row span.selected');
 
