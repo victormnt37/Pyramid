@@ -204,7 +204,8 @@ function createButtons(letters) {
   const deleteButton = document.querySelector('footer div i.fa-delete-left'),
     enterButton = document.querySelector('footer div i.fa-check'),
     moveButton = document.querySelector('footer div i.fa-arrows-rotate'),
-    shareButton = document.querySelector('footer div i.fa-share');
+    shareButton = document.querySelector('footer div i.fa-share'),
+    endShareButton = document.querySelector('div#end div#share i.fa-share');
 
   deleteButton.addEventListener('click', () => {
     deleteLetter();
@@ -218,7 +219,25 @@ function createButtons(letters) {
     moveLetters(letters.letters);
   });
 
-  shareButton.addEventListener('click', () => {}); //TO-DO
+  shareButton.addEventListener('click', () => {
+    copyResult(letters);
+  });
+
+  endShareButton.addEventListener('click', () => {
+    copyResult(letters);
+  });
+}
+
+function copyResult(letters) {
+  const percentage = (letters.row / letters.maxLength) * 100;
+  const text =
+    'I completed ' +
+    Math.floor(percentage) +
+    '% (￣０￣)ノ https://victormnt37.github.io/Pyramid/html/index.html';
+
+  navigator.clipboard.writeText(text);
+
+  showMessage('Copied result!', 'cadetblue');
 }
 
 /************ CREATE NEW ROW ************/

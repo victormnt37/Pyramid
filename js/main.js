@@ -48,6 +48,7 @@ useSelectedTheme();
 addUpperDivs();
 
 if (letters.row - 1 == letters.maxLength) {
+  letters.row--;
   document.querySelector('div#end').hidden = false;
   document.querySelector('div#end p span#victories').innerHTML =
     localStorage.getItem('victories');
