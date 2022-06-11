@@ -253,6 +253,12 @@ div#end span {
     margin-top: 3rem;
   }
 
+  div#info,
+  div#adjust,
+  div#end {
+    height: 100%;
+  }
+
   div#info p {
     font-size: 0.7rem;
   }
@@ -267,5 +273,10 @@ div#end span {
 
   div#adjust h2 {
     font-size: 0.8rem;
+  }
+
+  div#message {
+    margin-left: 2%;
+    width: 30%;
   }
 }
