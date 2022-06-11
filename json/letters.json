@@ -31,9 +31,9 @@
       "maxLength": 9
     },
     {
-      "letters": ["b", "a", "d", "h", "n", "l", "o"],
+      "letters": ["a", "i", "e", "s", "c", "r", "d"],
       "date": "12/6/2022",
-      "maxLength": 8
+      "maxLength": 11
     },
     {
       "letters": ["c", "r", "i", "s", "v", "a", "o"],
@@ -41,14 +41,14 @@
       "maxLength": 10
     },
     {
-      "letters": ["p", "y", "r", "a", "m", "i", "d"],
+      "letters": ["b", "a", "d", "h", "n", "l", "o"],
       "date": "14/6/2022",
-      "maxLength": 9
+      "maxLength": 8
     },
     {
-      "letters": ["a", "i", "e", "s", "c", "r", "d"],
+      "letters": ["p", "y", "r", "a", "m", "i", "d"],
       "date": "15/6/2022",
-      "maxLength": 11
+      "maxLength": 9
     },
     {
       "letters": ["a", "e", "o", "r", "s", "m", "t"],
