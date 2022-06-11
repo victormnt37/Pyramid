@@ -139,7 +139,7 @@ function addUpperDivs() {
 function insertLetter(event, input) {
   const regexp = new RegExp('^[a-zA-Zs]*$');
   if (event.key.match(regexp) && event.key.length === 1) {
-    input.innerHTML = input.innerHTML + event.key;
+    input.innerHTML = input.innerHTML + event.key.toLowerCase();
   }
 }
 
