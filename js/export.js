@@ -34,8 +34,11 @@ function createLetters() {
 
   const json = JSON.parse(sessionStorage.getItem('letters'));
 
+  //Since json is set as a sessionStorage item, the page will wait until is done
   if (!json) {
-    setTimeout('location.reload(true);', 100);
+    setTimeout('location.reload(true);', 500);
+  } else {
+    document.querySelector('div#loading').hidden = true;
   }
 
   for (let i = 0; i < json.dailyLetters.length; i++) {

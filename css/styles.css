@@ -233,6 +233,28 @@ div#end span {
   color: aliceblue;
 }
 
+div#loading {
+  color: aliceblue;
+  background-color: darkslategrey;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+div#loading div#loadTitle {
+  display: flex;
+  justify-content: center;
+}
+
+div#loading div#loadTitle h1 {
+  font-size: 1.7rem;
+}
+
 /* MOBILE */
 
 @media only screen and (max-width: 600px) {
