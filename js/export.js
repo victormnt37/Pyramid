@@ -236,7 +236,7 @@ function copyResult(letters) {
   const text =
     'I completed ' +
     Math.floor(percentage) +
-    '% (￣０￣)ノ https://victormnt37.github.io/Pyramid/html/index.html';
+    '% https://victormnt37.github.io/Pyramid/html/index.html';
 
   navigator.clipboard.writeText(text);
 
@@ -267,7 +267,7 @@ async function getWord(wordSpan, word, letters) {
   );
   if (resp.ok && letters.row < letters.maxLength && word.length > 2) {
     createRow(letters);
-
+    showWords(letters.row, letters.maxLength);
     storeWord(word);
   } else if (!resp.ok) {
     showMessage('"' + word + '" does not exist :/', 'red');
@@ -278,9 +278,17 @@ async function getWord(wordSpan, word, letters) {
     wordSpan.className = 'selected';
     return;
   } else if (resp.ok && letters.row >= letters.maxLength) {
+    showWords(letters.row, letters.maxLength);
     storeWord(word);
     storeVictory();
   }
+}
+
+function showWords(currentRow, maxRow) {
+  let cRow = currentRow - 3;
+  let mRow = maxRow - 3;
+  document.querySelector('footer div p#wordsCompleted').innerHTML =
+    cRow + '/' + mRow;
 }
 
 function storeWord(word) {

@@ -113,6 +113,10 @@ footer div i {
   margin-top: 0.7rem;
 }
 
+footer div p#wordsCompleted {
+  margin-top: 0.5rem;
+}
+
 div#message {
   position: relative;
   width: 10%;
